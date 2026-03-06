@@ -18,13 +18,17 @@ jobs:
           dotnet-version: '10.x'
 
       - name: Restore
-        run: dotnet restore
+        run: dotnet restore ./DevKit.Common.csproj
 
       - name: Build
-        run: dotnet build -c Release --no-restore
+        run: dotnet build ./DevKit.Common.csproj -c Release --no-restore
 
       - name: Pack
-        run: dotnet pack -c Release --no-build --output ./nupkgs
+        run: |
+          VERSION=${GITHUB_REF_NAME#v}
+          dotnet pack ./DevKit.Common.csproj -c Release --no-build --output ./nupkgs /p:PackageVersion=$VERSION
 
       - name: Publish to NuGet
-        run: dotnet nuget push ./nupkgs/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: dotnet nuget push ./nupkgs/*.nupkg --api-key $NUGET_API_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate

@@ -24,6 +24,24 @@ Ser uma biblioteca de referência para projetos .NET que precisam de:
 - [.NET 10](https://dotnet.microsoft.com/)
 - C# com Nullable Reference Types habilitado
 
+## 📥 Instalação (NuGet)
+
+O pacote é publicado no NuGet com o ID:
+
+- `LuisGustavoRosa.DevKit.Common`
+
+### Via CLI
+
+```bash
+dotnet add package LuisGustavoRosa.DevKit.Common
+```
+
+### Via Visual Studio
+
+`Manage NuGet Packages` → aba `Browse` → pesquise por `LuisGustavoRosa.DevKit.Common`.
+
+> Observação: após publicar uma nova versão, o NuGet pode levar alguns minutos (em alguns casos até ~1 hora) para concluir validação e indexação. Até isso finalizar, o pacote pode não aparecer na busca do site/Visual Studio.
+
 ## 📦 O que já tem
 
 ### Result Pattern
