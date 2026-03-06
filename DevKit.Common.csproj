@@ -5,7 +5,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
-    <PackageId>DevKit.Common</PackageId>
+    <PackageId>LuisGustavoRosa.DevKit.Common</PackageId>
+    <Title>DevKit.Common</Title>
+    <AssemblyName>DevKit.Common</AssemblyName>
+    <RootNamespace>DevKit.Common</RootNamespace>
     <Version>1.0.0</Version>
     <Authors>LuisGustavoRosa</Authors>
     <Description>Um kit de ferramentas para acelerar o desenvolvimento de APIs .NET — com padrões prontos, consistentes e prontos para produção.</Description>
@@ -19,7 +22,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include=".github\workflows\publish.yml" />
     <None Include="README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
