@@ -4,6 +4,23 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
+    <PackageId>DevKit.Common</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>LuisGustavoRosa</Authors>
+    <Description>Um kit de ferramentas para acelerar o desenvolvimento de APIs .NET — com padrões prontos, consistentes e prontos para produção.</Description>
+    <PackageTags>dotnet;api;result-pattern;error-handling;devkit</PackageTags>
+    <PackageProjectUrl>https://github.com/LuisGustavoRosa/DevKit.Common</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/LuisGustavoRosa/DevKit.Common</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include=".github\workflows\publish.yml" />
+    <None Include="README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
 </Project>
