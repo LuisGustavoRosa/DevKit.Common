@@ -14,39 +14,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.x'
 
-      - name: Restore dependencies
+      - name: Restore
         run: dotnet restore ./DevKit.Common.csproj
 
       - name: Build
         run: dotnet build ./DevKit.Common.csproj -c Release --no-restore
 
-      - name: Pack NuGet
+      - name: Pack
         run: |
           VERSION=${GITHUB_REF_NAME#v}
-          dotnet pack ./DevKit.Common.csproj \
-          -c Release \
-          --no-build \
-          --output ./nupkgs \
-          /p:PackageVersion=$VERSION
+          dotnet pack ./DevKit.Common.csproj -c Release --no-build --output ./nupkgs /p:PackageVersion=$VERSION
 
-      # Publica no NuGet.org
       - name: Publish to NuGet
-        run: dotnet nuget push ./nupkgs/*.nupkg \
-          --api-key ${{ secrets.NUGET_API_KEY }} \
-          --source https://api.nuget.org/v3/index.json \
-          --skip-duplicate
-
-      # Publica no GitHub Packages
-      - name: Publish to GitHub Packages
-        run: dotnet nuget push ./nupkgs/*.nupkg \
-          --api-key ${{ secrets.GITHUB_TOKEN }} \
-          --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json \
-          --skip-duplicate
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: dotnet nuget push ./nupkgs/*.nupkg --api-key $NUGET_API_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate
